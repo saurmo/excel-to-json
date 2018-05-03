@@ -1,0 +1,85 @@
+{
+  "name": "partner_data", 
+  "title": "Datos compañero permanente", 
+  "sms_keyword": "form_partner_data", 
+  "default_language": "default", 
+  "id_string": "form_partner_data", 
+  "type": "survey", 
+  "children": [
+    {
+      "type": "note", 
+      "name": "lbl_title", 
+      "alignment": "center", 
+      "label": "DATOS COMPAÑERO PERMANENTE"
+    }, 
+    {
+      "type": "text", 
+      "name": "txt_name", 
+      "label": "Nombres y apellidos"
+    }, 
+    {
+      "type": "text", 
+      "name": "txt_address", 
+      "label": "Dirección"
+    }, 
+    {
+      "control": {
+        "appearance": "field-list"
+      }, 
+      "type": "group", 
+      "name": "ly_contact", 
+      "children": [
+        {
+          "width": "50", 
+          "type": "text", 
+          "name": "txt_phone", 
+          "label": "Teléfono Fijo"
+        }, 
+        {
+          "width": "50", 
+          "type": "text", 
+          "name": "txt_movil", 
+          "label": "Celular"
+        }
+      ]
+    }, 
+    {
+      "choices": [
+        {
+          "name": "rb_yes", 
+          "label": "Sí"
+        }, 
+        {
+          "name": "rb_no", 
+          "label": "No"
+        }
+      ], 
+      "type": "select_one", 
+      "orientation": "horizontal", 
+      "name": "rg_is_associated", 
+      "label": "Es asociado:"
+    }, 
+    {
+      "type": "button", 
+      "name": "btn_save", 
+      "label": "Guardar y continuar"
+    }, 
+    {
+      "control": {
+        "bodyless": true
+      }, 
+      "type": "group", 
+      "name": "meta", 
+      "children": [
+        {
+          "bind": {
+            "readonly": "true()", 
+            "calculate": "concat('uuid:', uuid())"
+          }, 
+          "type": "calculate", 
+          "name": "instanceID"
+        }
+      ]
+    }
+  ]
+}
