@@ -44,6 +44,8 @@
       ]
     }, 
     {
+      "orientation": "horizontal", 
+      "label": "Es asociado:", 
       "choices": [
         {
           "name": "rb_yes", 
@@ -54,10 +56,9 @@
           "label": "No"
         }
       ], 
+      "type_aux": "bool", 
       "type": "select_one", 
-      "orientation": "horizontal", 
-      "name": "rg_is_associated", 
-      "label": "Es asociado:"
+      "name": "rg_is_associated"
     }, 
     {
       "type": "button", 
