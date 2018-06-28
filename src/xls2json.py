@@ -41,6 +41,7 @@ def parse_file_to_workbook_dict(path, file_object=None):
 
     (shortname, extension) = os.path.splitext(filename)
     if not extension:
+        print(path)
         raise PyXFormError("No extension.")
 
     if extension == ".xls" or extension == ".xlsx":
@@ -73,11 +74,14 @@ def _create_parser():
 
 def run_file_to_json(file_in, output):    
     filename = unicode(get_filename(file_in))
-    json_survey = parse_file_to_json(file_in, filename)
+    warnings = []
+    json_survey = parse_file_to_json(file_in, filename, warnings=warnings)
     if os.path.isdir(output):
         json_out=output+"/"+filename+".json"
     else:
         json_out=output.split(".")[0]+".json"
+    print("Archivos ", file_in)
+    print(warnings)
     print_pyobj_to_json(json_survey, json_out)
  
 def run_folder_to_json(folder_in, folder_out):
@@ -98,7 +102,7 @@ def main_cli():
         run_folder_to_json(path_in, path_out)
     else:
         run_file_to_json(path_in, path_out)
-    print("Conversion complete")
+    print("Conversion complete: " + path_in + "\t" + path_out)
 
 if __name__ == "__main__":
     main_cli()

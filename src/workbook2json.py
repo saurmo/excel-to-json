@@ -545,9 +545,10 @@ def workbook_to_json(workbook_dict, form_name=None, default_language=u"default",
             #     # autogenerate names for groups without them
             #     row['name'] = "generated_group_name_" + str(row_number)
             else:
-                raise PyXFormError(row_format_string % row_number +
-                                   " Question or group with no name.")
+                warnings.append(row_format_string % row_number + " Question or group with no name.")
+                #raise PyXFormError(row_format_string % row_number + " Question or group with no name.")
         question_name = unicode(row[constants.NAME])
+        question_name = question_name.replace(" ", "")
         if not is_valid_xml_tag(question_name):
             if isinstance(question_name, bytes):
                 question_name = question_name.encode('utf-8')
