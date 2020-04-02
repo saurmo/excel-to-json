@@ -1,24 +1,55 @@
-# excel-to-json
+# EXCEL A JSON (PYTHON 2.7)
 
 Basado en https://github.com/XLSForm/pyxform y https://github.com/mvpdev/xls2xform/
-Convierte un excel con formato http://xlsform.org/ a json, se le agrego una funcionalidad 
+Convierte un excel con formato http://xlsform.org/ a json, se le agrego una funcionalidad
 donde se puede pasar una carpeta con varios archivos de excel y los convierte cada uno a json
 
-Versión de python 2.7
+Nota: Se utiliza python con versión de python 2.7
 
-#Dependencias
+## Dependencias
 
-* xlrd 
-* unicodecsv 
+Las dependias que se deben de tener instaladas en python con el pip son:
 
-#Run
-Parametro 1 [Opción 1] = Una carpeta con archivos excel "test\xls" 
-Parametro 1 [Opción 2] = Puede ser solo un archivo "ejemplo.xlsx"
+- `pip install xlrd`
+- `pip install unicodecsv`
 
-Parametro 2 [Opción 1] = Carpeta existente donde se guardara el json "test\json" (En este caso el nombre del archivo .json es igual al nombre del excel)
-Parametro 2 [Opción 2] = Nombre del archivo json y su ubicación "test/mi_ejemplo.json"
+## ¿Cómo ejecutar el proyecto?
 
-python src\xls2json.py parametro1 parametro2
+### Primera opción: Ejecutar una carpeta con archivos excel
 
-python src\xls2json.py test\xls test\json
+```python
+    python src\xls2json.py ../../pruebas/archivos parametro2
+```
 
+```python
+    python src\xls2json.py parametro1 parametro2
+```
+
+1. parametro1 es la ruta y el nombre de la carpeta que contiene los excel.
+2. parametro2 es la ruta y el nombre de la carpeta donde se van a guardar los json
+
+### Primera opción: Ejecutar una carpeta con archivos excel
+
+```
+    python src\xls2json.py ../../pruebas/archivos-excel ../../resultado/archivos-json
+```
+
+```
+    python src\xls2json.py parametro1 parametro2
+```
+
+1. parametro1 es la ruta y el nombre de la carpeta que contiene los excel.
+2. parametro2 es la ruta y el nombre de la carpeta donde se van a guardar los json
+
+### Segunda opción: Ejecutar un archivo excel
+
+```
+    python src\xls2json.py ../../pruebas/archivo-excel.xlsx ../../resultado/archivo.json
+```
+
+```
+    python src\xls2json.py parametro1 parametro2
+```
+
+1. parametro1 es la ruta y el nombre del archivo excel.
+2. parametro2 es la ruta y el nombre del archivo json que se generará

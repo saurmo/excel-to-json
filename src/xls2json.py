@@ -73,16 +73,19 @@ def _create_parser():
     return parser
 
 def run_file_to_json(file_in, output):    
-    filename = unicode(get_filename(file_in))
     warnings = []
-    json_survey = parse_file_to_json(file_in, filename, warnings=warnings)
-    if os.path.isdir(output):
-        json_out=output+"/"+filename+".json"
-    else:
-        json_out=output.split(".")[0]+".json"
-    print("Archivos ", file_in)
-    print(warnings)
-    print_pyobj_to_json(json_survey, json_out)
+    try:
+        filename = unicode(get_filename(file_in))
+        json_survey = parse_file_to_json(file_in, filename, warnings=warnings)
+        if os.path.isdir(output):
+            json_out=output+"/"+filename+".json"
+        else:
+            json_out=output.split(".")[0]+".json"
+        
+        print_pyobj_to_json(json_survey, json_out)
+    except:
+        print("Error en el archivo:", file_in)
+ 
  
 def run_folder_to_json(folder_in, folder_out):
     files=os.listdir(folder_in)
@@ -90,19 +93,23 @@ def run_folder_to_json(folder_in, folder_out):
     if os.path.isdir(folder_out)==False:
         out=folder_out.split(".")[0]
     for f in files:
-        file_in = folder_in + "/" + f
-        run_file_to_json(file_in, out)
+        file_in = folder_in  + f
+        if ".DS_Store" != f :
+            run_file_to_json(file_in, out)
 
 def main_cli():
     parser = _create_parser()
     args = parser.parse_args()
     path_in = args.path_in
     path_out = args.path_out
-    if os.path.isdir(path_in):
-        run_folder_to_json(path_in, path_out)
-    else:
-        run_file_to_json(path_in, path_out)
-    print("Conversion complete: " + path_in + "\t" + path_out)
+    try:
+        if os.path.isdir(path_in):
+            run_folder_to_json(path_in, path_out)
+        else:
+            run_file_to_json(path_in, path_out)
+        print("Conversion completa: " + path_in + "\t" + path_out)
+    except:
+        print("Error en la conversion de " + path_in)
 
 if __name__ == "__main__":
     main_cli()
