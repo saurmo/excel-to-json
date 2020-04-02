@@ -1,0 +1,159 @@
+{
+  "plural": "Usuarios", 
+  "genero": "M", 
+  "name": "usuarios", 
+  "title": "Usuarios", 
+  "sms_keyword": "form_clientes", 
+  "singular": "Usuario", 
+  "default_language": "default", 
+  "id_string": "form_clientes", 
+  "path": "documents/acl_users/", 
+  "type": "survey", 
+  "children": [
+    {
+      "choices": [
+        {
+          "name": "CC", 
+          "label": "CC"
+        }, 
+        {
+          "name": "CE", 
+          "label": "CE"
+        }, 
+        {
+          "name": "PASAPORTE", 
+          "label": "PASAPORTE"
+        }, 
+        {
+          "name": "TI", 
+          "label": "TI"
+        }
+      ], 
+      "name": "tipo_id", 
+      "key": "true", 
+      "bind": {
+        "required": "true"
+      }, 
+      "size": "4", 
+      "type": "select_one", 
+      "external_value": "name", 
+      "label": "Tipo de identificación"
+    }, 
+    {
+      "name": "id", 
+      "bind": {
+        "required": "true"
+      }, 
+      "label": "Identificación", 
+      "key": "true", 
+      "type": "text", 
+      "size": "4"
+    }, 
+    {
+      "bind": {
+        "required": "true"
+      }, 
+      "label": "Fecha de nacimiento", 
+      "type": "date", 
+      "name": "fecha_nacimiento", 
+      "size": "4"
+    }, 
+    {
+      "bind": {
+        "required": "true"
+      }, 
+      "label": "Nombre", 
+      "type": "text", 
+      "name": "nombres", 
+      "size": "6"
+    }, 
+    {
+      "bind": {
+        "required": "true"
+      }, 
+      "label": "Apellidos", 
+      "type": "text", 
+      "name": "apellidos", 
+      "size": "6"
+    }, 
+    {
+      "name": "celular", 
+      "bind": {
+        "required": "true"
+      }, 
+      "label": "Celular", 
+      "length": "10", 
+      "type_aux": "phone", 
+      "type": "text", 
+      "size": "6"
+    }, 
+    {
+      "name": "email", 
+      "bind": {
+        "required": "true"
+      }, 
+      "label": "Correo", 
+      "type_aux": "email", 
+      "type": "text", 
+      "size": "6"
+    }, 
+    {
+      "bind": {
+        "required": "true"
+      }, 
+      "label": "Nombre contacto de emergencia", 
+      "type": "text", 
+      "name": "contacto_emergencia", 
+      "size": "6"
+    }, 
+    {
+      "name": "contacto_emergencia_cel", 
+      "bind": {
+        "required": "true"
+      }, 
+      "label": "Celular contacto de emergencia", 
+      "length": "10", 
+      "type_aux": "phone", 
+      "type": "text", 
+      "size": "6"
+    }, 
+    {
+      "name": "password", 
+      "show_when": "{{editing}}==false", 
+      "bind": {
+        "required": "true"
+      }, 
+      "label": "Contraseña", 
+      "type": "password", 
+      "size": "6"
+    }, 
+    {
+      "name": "password_repeat", 
+      "show_when": "{{editing}}==false", 
+      "bind": {
+        "required": "true", 
+        "constraint": "password"
+      }, 
+      "label": "Confirmar contraseña", 
+      "type": "password", 
+      "size": "6"
+    }, 
+    {
+      "control": {
+        "bodyless": true
+      }, 
+      "type": "group", 
+      "name": "meta", 
+      "children": [
+        {
+          "bind": {
+            "readonly": "true()", 
+            "calculate": "concat('uuid:', uuid())"
+          }, 
+          "type": "calculate", 
+          "name": "instanceID"
+        }
+      ]
+    }
+  ]
+}
